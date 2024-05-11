@@ -1,6 +1,7 @@
 const {
   get404Handler, getLoginHandler, getSignUpHandler,
-  getCssHandler, getHomeHandler, postSignUpHandler
+  getCssHandler, getHomeHandler, postSignUpHandler,
+  getAllUsersHandler, postLoginHandler,
 } = require('./handlers');
 
 const routes = [
@@ -17,7 +18,7 @@ const routes = [
   {
     path: '/login',
     method: 'POST',
-    handler: ()=>{},
+    handler: postLoginHandler,
   },
   {
     path: '/sign-up',
@@ -38,6 +39,11 @@ const routes = [
     path: '/home',
     method: 'GET',
     handler: getHomeHandler,
+  },
+  {
+    path: '/users',
+    method: 'GET',
+    handler: getAllUsersHandler,
   },
 ];
 

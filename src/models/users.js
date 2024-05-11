@@ -30,10 +30,20 @@ const createUser = (username, password) => {
   });
 };
 
-const getAllUser = () => {
-  const [result] = dbConnection.query('SELECT * FROM users');
+const getAllUser = async () => {
+  const [result] = await dbConnection.query('SELECT * FROM users');
   return result;
+};
+
+const verifyUser = async (username, password) => {
+  const [result] = await dbConnection.query(
+    `SELECT * FROM users WHERE
+        username='${username}' AND
+        password='${password}'`,
+  );
+  return result.length === 1;
 };
 
 module.exports.createUser = createUser;
 module.exports.getAllUser = getAllUser;
+module.exports.verifyUser = verifyUser;
