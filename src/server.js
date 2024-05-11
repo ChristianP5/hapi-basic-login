@@ -27,6 +27,7 @@ const init = async () => {
       hbs: require('handlebars'),
     },
     path: path.join(__dirname, 'views'),
+    layout: './layout/layout',
   });
 
   server.route(routes);

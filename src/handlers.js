@@ -1,8 +1,11 @@
+const Users = require('./models/users');
+
+
 const get404Handler = (request, h) => h.redirect('/login');
 
-const getLoginHandler = (request, h) => h.file('login.hbs');
+const getLoginHandler = (request, h) => h.view('login');
 
-const getSignUpHandler = (request, h) => h.file('sign-up.hbs');
+const getSignUpHandler = (request, h) => h.view('sign-up');
 
 const getCssHandler = (request, h) => {
   const { filename } = request.params;
@@ -10,13 +13,16 @@ const getCssHandler = (request, h) => {
   return h.file(`css/${filename}`);
 };
 
-const getHomeHandler = (request, h) => h.file('home.hbs');
+const getHomeHandler = (request, h) => h.view('home');
 
-const postSignUpHandler = (request, h) => {
+const postSignUpHandler = async (request, h) => {
   const { username, password } = request.payload;
   const data = {
     username, password,
   };
+
+  await Users.createUser(username, password);
+
   return h.view('home', data);
 };
 
