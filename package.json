@@ -4,14 +4,16 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon ./src/server.js",
+    "start": "nodemon -e js,html,hbs ./src/server.js",
     "lint": "eslint ./src"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@hapi/hapi": "^21.3.9",
-    "@hapi/inert": "^7.1.0"
+    "@hapi/inert": "^7.1.0",
+    "@hapi/vision": "^7.0.3",
+    "handlebars": "^4.7.8"
   },
   "devDependencies": {
     "eslint": "^8.57.0",

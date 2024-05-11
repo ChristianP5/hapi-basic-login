@@ -17,7 +17,17 @@ const init = async () => {
     {
       plugin: require('@hapi/inert'),
     },
+    {
+      plugin: require('@hapi/vision'),
+    },
   ]);
+
+  server.views({
+    engines: {
+      hbs: require('handlebars'),
+    },
+    path: path.join(__dirname, 'views'),
+  });
 
   server.route(routes);
 
